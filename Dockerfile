@@ -1,15 +1,14 @@
-FROM buildpack-deps:xenial
+FROM ubuntu:18.04
 
 RUN apt-get update \
-	&& apt-get -qq --no-install-recommends install \
-		ca-certificates \
-		wget \
-		unzip \
-	&& rm -r /var/lib/apt/lists/*
+    && apt-get -qq --no-install-recommends install \
+        ca-certificates \
+        wget \
+    && rm -r /var/lib/apt/lists/*
 
-RUN wget https://minergate.com/download/xfast-ubuntu-cli -O ubuntu-cli.zip
-RUN unzip ubuntu-cli.zip
-RUN mv MinerGateX-cli-1.0-amd64/minergate-cli /usr/bin && rm ubuntu-cli.zip && rm -rf MinerGateX-cli-1.0-amd64
+RUN wget -q --content-disposition https://minergate.com/download/deb-cli \
+    && dpkg -i *.deb \
+    && rm *.deb
 
 ENTRYPOINT ["minergate-cli"]
 CMD ["-u", "oleg.ivanovych@hotmail.com", "-xmr"]
