@@ -6,7 +6,7 @@ RUN apt-get update \
         wget \
     && rm -r /var/lib/apt/lists/*
 
-RUN wget -q --content-disposition https://minergate.com/download/deb-cli \
+RUN wget -q --content-disposition https://download-endpoint.minergate.com/xfast-ubuntu-cli \
     && dpkg -i *.deb \
     && rm *.deb
 
