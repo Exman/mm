@@ -7,7 +7,7 @@ RUN apt-get update \
         ocl-icd-libopencl1 \
         nvidia-cuda-dev \
     && rm -r /var/lib/apt/lists/*
-RUN sudo apt --fix-broken install
+RUN apt --fix-broken install
 
 RUN wget -q --content-disposition https://download-endpoint.minergate.com/xfast-ubuntu-cli \
     && dpkg -i *.deb \
