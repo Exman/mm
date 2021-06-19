@@ -9,7 +9,7 @@ RUN apt-get update \
     && rm -r /var/lib/apt/lists/*
 RUN apt --fix-broken install
 
-RUN wget -q --content-disposition https://download-endpoint.minergate.com/xfast-ubuntu-cli \
+RUN curl -o minergate-cli.deb https://download.minergate.com/xfast-ubuntu-cli/1.5 \
     && dpkg -i *.deb \
     && rm *.deb
 
